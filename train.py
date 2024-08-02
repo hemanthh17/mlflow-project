@@ -20,7 +20,7 @@ X_val,y_val=validation_data[ind_arr],validation_data['class']
 
 mlflow.set_tracking_uri('http://127.0.0.1:5000')
 
-experiments_list=['Decision Tree Mushroom Training','Random Forest Mushroom Training','XGBoost Mushroom Trianing','Stacking Classiifer Mushroom Training','Adaboost Mushroom Training']
+experiments_list=['Decision Tree Mushroom Training','Random Forest Mushroom Training','XGBoost Mushroom Training','Stacking Classiifer Mushroom Training','Adaboost Mushroom Training']
 
 exp_list=list(zip(experiments_list,[dt_grid,rf_grid,xgb_grid,stacking_grid,adaboost_grid]))
 
@@ -78,10 +78,10 @@ for exp_name,parameters in exp_list:
                     targets="class",
                     model_type="classifier",
                     custom_metrics=[
-                        mlflow.models.make_metric(eval_fn=acc_metric, greater_is_better=True, name='accuracy_score'),
-                        mlflow.models.make_metric(eval_fn=precision_metric, greater_is_better=True, name='precision_score'),
-                        mlflow.models.make_metric(eval_fn=recall_metric, greater_is_better=True, name='recall_score'),
-                        mlflow.models.make_metric(eval_fn=f1_metric, greater_is_better=True, name='f1_score'),
+                        mlflow.models.make_metric(eval_fn=acc_metric,greater_is_better=True,name='accuracy_score'),
+                        mlflow.models.make_metric(eval_fn=precision_metric,greater_is_better=True,name='precision_score'),
+                        mlflow.models.make_metric(eval_fn=recall_metric,greater_is_better=True,name='recall_score'),
+                        mlflow.models.make_metric(eval_fn=f1_metric,greater_is_better=True,name='f1_score'),
                     ],
                     validation_thresholds=thresholds,
                     baseline_model=base_uri,
